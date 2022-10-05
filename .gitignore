@@ -24,3 +24,8 @@ hs_err_pid*
 
 .idea
 target
+.idea/sonarlint/issuestore/index.pb
+
+
+node
+node_modules

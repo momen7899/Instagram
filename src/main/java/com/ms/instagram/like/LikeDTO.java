@@ -10,9 +10,6 @@ import lombok.Data;
 public class LikeDTO extends BaseDTO {
 
     @ApiModelProperty(required = true, hidden = false)
-    private Boolean isLike;
-
-    @ApiModelProperty(required = true, hidden = false)
     private PostDTO post;
 
     @ApiModelProperty(required = true, hidden = false)

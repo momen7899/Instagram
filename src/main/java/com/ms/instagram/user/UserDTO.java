@@ -1,11 +1,11 @@
-package com.ms.instagram.profile;
+package com.ms.instagram.user;
 
 import com.ms.instagram.common.BaseDTO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 @Data
-public class ProfileDTO extends BaseDTO {
+public class UserDTO extends BaseDTO {
 
     @ApiModelProperty(required = true,hidden = false)
     private String name;

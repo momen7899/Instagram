@@ -2,10 +2,9 @@ package com.ms.instagram.comment;
 
 import com.ms.instagram.common.BaseEntity;
 import com.ms.instagram.post.Post;
-import com.ms.instagram.profile.ProfileModel;
+import com.ms.instagram.user.User;
 import lombok.Data;
 import org.hibernate.envers.Audited;
-import org.springframework.context.annotation.Profile;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -18,14 +17,12 @@ public class Comment extends BaseEntity {
 
 
     @NotNull
-    @Column(name = "comment")
-    private String comment;
+    private String text;
 
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private ProfileModel profile;
-
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "post_id")

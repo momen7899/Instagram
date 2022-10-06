@@ -2,7 +2,7 @@ package com.ms.instagram.comment;
 
 import com.ms.instagram.common.BaseDTO;
 import com.ms.instagram.post.PostDTO;
-import com.ms.instagram.profile.ProfileDTO;
+import com.ms.instagram.user.UserDTO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -12,7 +12,7 @@ public class CommentDTO extends BaseDTO {
     private String comment;
 
     @ApiModelProperty(required = true,hidden = false)
-    private ProfileDTO profile;
+    private UserDTO profile;
 
     @ApiModelProperty(required = true,hidden = false)
     private PostDTO post;

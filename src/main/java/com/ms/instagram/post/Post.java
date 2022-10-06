@@ -1,24 +1,36 @@
 package com.ms.instagram.post;
 
-import com.ms.instagram.common.BaseDTO;
+import com.ms.instagram.comment.Comment;
 import com.ms.instagram.common.BaseEntity;
-import com.ms.instagram.profile.ProfileModel;
+import com.ms.instagram.like.Like;
+import com.ms.instagram.user.User;
 import lombok.Data;
 import org.hibernate.envers.Audited;
-import org.springframework.context.annotation.Profile;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
 @Audited
-@Table(name = "tbl_post")
+@Table(name = Post.POST_TB_NAME)
 public class Post extends BaseEntity {
 
-    @Column(name = "tbl_caption")
+    public static final String POST_TB_NAME = "post_tbl";
+
+
+    private String file;
     private String caption;
 
     @ManyToOne
-    @JoinColumn(name = "profile_id")
-    private ProfileModel profile;
+    @JoinColumn(name = "user_id")
+    private User user;
+
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Like> likes;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Comment> comments;
+
 }

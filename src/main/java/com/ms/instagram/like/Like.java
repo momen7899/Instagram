@@ -1,11 +1,10 @@
-package com.ms.instagram.common.like;
+package com.ms.instagram.like;
 
 import com.ms.instagram.common.BaseEntity;
 import com.ms.instagram.post.Post;
-import com.ms.instagram.profile.ProfileModel;
+import com.ms.instagram.user.User;
 import lombok.Data;
 import org.hibernate.envers.Audited;
-import org.springframework.context.annotation.Profile;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -16,17 +15,12 @@ import javax.validation.constraints.NotNull;
 @Audited
 public class Like extends BaseEntity {
 
-    @NotNull
-    @Column(name = "is_like")
-    private Boolean isLike;
-
-
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "post_id")
     private Post post;
 
     @ManyToOne
-    @JoinColumn(name = "place_id")
-    private ProfileModel profile;
+    @JoinColumn(name = "user_id")
+    private User user;
 
 }

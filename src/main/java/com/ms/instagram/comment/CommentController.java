@@ -1,6 +1,10 @@
 package com.ms.instagram.comment;
 
+import com.ms.instagram.common.PagingDTO;
+import com.ms.instagram.common.PagingData;
+import io.swagger.v3.oas.annotations.Parameter;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,63 +12,37 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/comment/")
+@RequestMapping(value = "/api/comment/v1")
 @AllArgsConstructor
 public class CommentController {
-    private final CommentServicePl servicePl;
+    private final CommentService service;
     private final CommentMapper mapper;
 
-
-    @PostMapping("/sava")
-    public ResponseEntity save(@RequestBody CommentDTO commentDTO) {
+    @PostMapping
+    public ResponseEntity<Void> save(@RequestBody CommentDTO commentDTO) {
         Comment comment = mapper.toComment(commentDTO);
-        servicePl.save(comment);
+        service.save(comment);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
-}
-/*
-    @PutMapping("/update")
-    public ResponseEntity update(@RequestBody CommentDTO commentDTO){
-        Comment comment =mapper.toComment(commentDTO);
-        servicePl.update(comment);
-        return ResponseEntity.ok().build();
-    }
-    @GetMapping("/det/{id}")
-    public ResponseEntity<CommentDTO> getById(@PathVariable Long id ){
 
-        Comment comment = servicePl.getById(id);
-        CommentDTO commentDTO=mapper.toCommentDTO(comment);
-        return ResponseEntity.ok(commentDTO);
-    }
-    @GetMapping("/getAll")
-    public ResponseEntity<List<CommentDTO>> getAll(){
-
-        List<Comment> comments=    servicePl.getAll();
-        List<CommentDTO> commentDTOS=    mapper.toCommentDTOs(comments);
-        return ResponseEntity.ok(commentDTOS);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity delete(@PathVariable Long id){
-
-        servicePl.delete(id);
-        return ResponseEntity.ok().build();
+    @GetMapping("/{id}")
+    public ResponseEntity<CommentDTO> get(@PathVariable Long id) {
+        return ResponseEntity.ok(mapper.toCommentDTO(service.getById(id)));
     }
 
-    @GetMapping("/v1/get-all-by-profile-id/{userId}")
-    public ResponseEntity<List<CommentDTO>> getAllByUserId(@PathVariable Long userId){
+    @GetMapping("/{postId}")
+    public ResponseEntity<PagingData<CommentDTO>> getPostById(@PathVariable Long postId, @Parameter PagingDTO pagingDTO) {
+        Page<Comment> comments = service.getAllByPostId(postId, pagingDTO.getPage(), pagingDTO.getSize());
+        int totalPage = comments.getTotalPages();
+        List<CommentDTO> data = mapper.toCommentDTOs(comments.getContent());
 
-        List<Comment> comments= servicePl.getAllByUserId(userId);
-        List<CommentDTO> commentDTOS= mapper.toCommentDTOs(comments);
-        return ResponseEntity.ok(commentDTOS);
+        return ResponseEntity.ok(new PagingData<>(totalPage, pagingDTO.getPage(), data));
     }
-
-    @GetMapping("/v1/get-all-by-post-id/{placeId}")
-    public ResponseEntity<List<CommentDTO>> getAllByPlaceId(@PathVariable Long placeId){
-
-        List<Comment> comments= servicePl.getAllByPlaceId(placeId);
-        List<CommentDTO> commentDTOS= mapper.toCommentDTOs(comments);
-        return ResponseEntity.ok(commentDTOS);
 
 }
-*/

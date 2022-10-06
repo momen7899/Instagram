@@ -1,18 +1,14 @@
 package com.ms.instagram.follower;
 
-import com.ms.instagram.post.Post;
-import org.springframework.context.annotation.Profile;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface FollowerRepository extends PagingAndSortingRepository<Follower,Long> {
-//List<Post> FindAllPost_ProfileModel(Long proId);
+public interface FollowerRepository extends PagingAndSortingRepository<Follower, Long> {
 
+    Page<Follower> findAllByUserFollower_Id(Long userFollower_id, Pageable pageable);
 
-//Follower FindFollower_ProfileModel(Long proId);
-
-
+    Page<Follower> findAllByUserFollowing_Id(Long userFollowing_id, Pageable pageable);
 }

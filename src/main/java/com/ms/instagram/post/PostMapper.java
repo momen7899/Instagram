@@ -1,11 +1,11 @@
 package com.ms.instagram.post;
 
-import com.ms.instagram.profile.ProfileMapper;
+import com.ms.instagram.user.UserMapper;
 import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {ProfileMapper.class})
+@Mapper(componentModel = "spring", uses = {UserMapper.class})
 public interface PostMapper {
 
     Post toPost(PostDTO postDTO);

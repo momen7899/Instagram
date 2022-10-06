@@ -1,13 +1,11 @@
 package com.ms.instagram.follower;
 
-import com.ms.instagram.post.Post;
-import com.ms.instagram.post.PostDTO;
-import com.ms.instagram.profile.ProfileMapper;
+import com.ms.instagram.user.UserMapper;
 import org.mapstruct.Mapper;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring", uses = {ProfileMapper.class})
+@Mapper(componentModel = "spring", uses = {UserMapper.class})
 public interface FollowerMapper {
     Follower toFollow(FollowerDTO followerDTO);
 

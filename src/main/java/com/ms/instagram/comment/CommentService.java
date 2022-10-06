@@ -1,48 +1,16 @@
 package com.ms.instagram.comment;
 
-import lombok.AllArgsConstructor;
-import org.springframework.stereotype.Service;
+import com.ms.instagram.post.Post;
+import org.springframework.data.domain.Page;
 
-import java.util.List;
+public interface CommentService {
 
-@AllArgsConstructor
-@Service
-public class CommentService implements CommentServicePl{
-private final CommentRepository repository;
-    @Override
-    public Comment save(Comment comment) {
-        return repository.save(comment);
-    }
-/*
-    @Override
-    public Comment update(Comment comment) {
-        return null;
-    }
+    Comment save(Comment comment);
 
-    @Override
-    public void delete(Long id) {
+    void delete(Long id);
 
-    }
+    Comment getById(Long id);
 
-    @Override
-    public Comment getById(Long id) {
-        return null;
-    }
+    Page<Comment> getAllByPostId(Long postId, Integer page, Integer size);
 
-    @Override
-    public List<Comment> getAll() {
-        return null;
-    }
-
-    @Override
-    public List<Comment> getAllByUserId(Long userId) {
-        return null;
-    }
-
-    @Override
-    public List<Comment> getAllByPlaceId(Long placeId) {
-        return null;
-    }
-
- */
 }

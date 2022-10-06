@@ -3,8 +3,9 @@ package com.ms.instagram.user;
 import java.util.List;
 
 public interface UserService {
-    User save(User profile);
+    User save(User user);
+    User update(User user);
 
-    User getById(Long ProId);
-    List<User> getAllProfile();
+    User getById(Long id);
+
 }

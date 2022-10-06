@@ -4,6 +4,8 @@ import com.ms.instagram.common.BaseDTO;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
+
 @Data
 public class UserDTO extends BaseDTO {
 
@@ -18,4 +20,7 @@ public class UserDTO extends BaseDTO {
 
    @ApiModelProperty(required = true,hidden = false)
    private String image;
+
+    @ApiModelProperty(required = true,hidden = false)
+    private String password;
 }

@@ -1,7 +1,6 @@
 package com.ms.instagram.comment;
 
 import com.ms.instagram.common.exception.NotFoundException;
-import com.ms.instagram.post.Post;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

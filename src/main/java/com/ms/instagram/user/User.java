@@ -1,5 +1,6 @@
 package com.ms.instagram.user;
 
+import com.ms.instagram.comment.Comment;
 import com.ms.instagram.common.BaseEntity;
 import com.ms.instagram.follower.Follower;
 import com.ms.instagram.like.Like;
@@ -19,17 +20,20 @@ public class User extends BaseEntity {
     public static final String USER_TB_NAME = "user_tb";
 
     @NotNull
-    @Column(name = "tbl_name")
+    @Column(name = "name")
     private String name;
 
     @NotNull
     @Column(name = "user_name")
     private String userName;
 
-    @Column(name = "tbl_bio")
+    @NotNull
+    private String password;
+
+    @Column(name = "bio")
     private String bio;
 
-    @Column(name = "tbl_image")
+    @Column(name = "image")
     private String image;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
@@ -37,6 +41,9 @@ public class User extends BaseEntity {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
     private List<Like> like;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Comment> comments;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "userFollower", cascade = CascadeType.ALL)
     private List<Follower> follower;

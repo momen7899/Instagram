@@ -92,13 +92,13 @@
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
-            <version>1.4.2.Final</version>
+            <version>1.5.2.Final</version>
         </dependency>
 
         <dependency>
             <groupId>io.minio</groupId>
             <artifactId>minio</artifactId>
-            <version>8.4.3</version>
+            <version>8.4.5</version>
         </dependency>
 
         <dependency>

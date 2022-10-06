@@ -1,6 +1,5 @@
 package com.ms.instagram.comment;
 
-import com.ms.instagram.post.Post;
 import org.springframework.data.domain.Page;
 
 public interface CommentService {

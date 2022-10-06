@@ -8,13 +8,13 @@ import lombok.Data;
 
 @Data
 public class CommentDTO extends BaseDTO {
-    @ApiModelProperty(required = true,hidden = false)
+    @ApiModelProperty(required = true, hidden = false)
     private String comment;
 
-    @ApiModelProperty(required = true,hidden = false)
+    @ApiModelProperty(required = true, hidden = false)
     private UserDTO profile;
 
-    @ApiModelProperty(required = true,hidden = false)
+    @ApiModelProperty(required = true, hidden = false)
     private PostDTO post;
 
 }

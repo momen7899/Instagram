@@ -88,18 +88,19 @@ public class ApiError {
      * Utility method for adding error of ConstraintViolation. Usually when a @Validated validation fails.
      *
      * @param cv the ConstraintViolation
-     *
-    private void addValidationError(ConstraintViolation<?> cv) {
-        this.addValidationError(
-                cv.getRootBeanClass().getSimpleName(),
-                ((PathImpl) cv.getHousePath()).getLeafNode().asString(),
-                cv.getInvalidValue(),
-                cv.getMessage());
-    }
-
-    void addValidationErrors(Set<ConstraintViolation<?>> constraintViolations) {
-        constraintViolations.forEach(this::addValidationError);
-    }*/
+     *           <p>
+     *           private void addValidationError(ConstraintViolation<?> cv) {
+     *           this.addValidationError(
+     *           cv.getRootBeanClass().getSimpleName(),
+     *           ((PathImpl) cv.getHousePath()).getLeafNode().asString(),
+     *           cv.getInvalidValue(),
+     *           cv.getMessage());
+     *           }
+     *           <p>
+     *           void addValidationErrors(Set<ConstraintViolation<?>> constraintViolations) {
+     *           constraintViolations.forEach(this::addValidationError);
+     *           }
+     */
 
 
     abstract class ApiSubError {

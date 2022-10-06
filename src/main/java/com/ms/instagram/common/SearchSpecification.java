@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SearchSpecification <T extends BaseEntity> implements Specification<T> {
+public class SearchSpecification<T extends BaseEntity> implements Specification<T> {
     private final List<SearchCriteria> list;
 
     public SearchSpecification() {

@@ -1,7 +1,6 @@
 package com.ms.instagram.like;
 
 import com.ms.instagram.common.exception.NotFoundException;
-import com.ms.instagram.post.Post;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

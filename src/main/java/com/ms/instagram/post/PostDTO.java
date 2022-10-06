@@ -8,8 +8,8 @@ import lombok.Data;
 @Data
 public class PostDTO extends BaseDTO {
 
-    @ApiModelProperty(required = true,hidden = false)
+    @ApiModelProperty(required = true, hidden = false)
     private String caption;
-    @ApiModelProperty(required = true,hidden = false)
+    @ApiModelProperty(required = true, hidden = false)
     private UserDTO profile;
 }

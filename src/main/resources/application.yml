@@ -1,0 +1,10 @@
+minio:
+  bucket:
+    name: instagram
+  default:
+    folder: "/"
+  access:
+    name: admin
+    secret: password
+
+  url: http://127.0.0.1:9000

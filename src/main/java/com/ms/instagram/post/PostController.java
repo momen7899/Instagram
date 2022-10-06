@@ -13,18 +13,36 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/post/")
+@RequestMapping(value = "/api/post/v1")
 @AllArgsConstructor
 public class PostController {
     private final PostService service;
     private final PostMapper mapper;
 
-    @PostMapping("/save")
+    @PostMapping
     public ResponseEntity<Void> save(@RequestBody PostDTO postDTO) {
         Post post = mapper.toPost(postDTO);
         service.save(post);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
+
+    @PutMapping
+    public ResponseEntity<PostDTO> update(@RequestBody PostDTO postDTO) {
+        Post post = mapper.toPost(postDTO);
+        return ResponseEntity.ok(mapper.toPostDTO(service.save(post)));
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        service.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<PostDTO> getById(@PathVariable Long id) {
+        return ResponseEntity.ok(mapper.toPostDTO(service.getById(id)));
+    }
+
 
     @GetMapping("/user/{userId}")
     public ResponseEntity<PagingData<PostDTO>> getPostById(@PathVariable Long userId, @Parameter PagingDTO pagingDTO) {

@@ -2,6 +2,7 @@ package com.ms.instagram.comment;
 
 import com.ms.instagram.common.PagingDTO;
 import com.ms.instagram.common.PagingData;
+import io.micrometer.core.annotation.Timed;
 import io.swagger.v3.oas.annotations.Parameter;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -36,6 +37,7 @@ public class CommentController {
         return ResponseEntity.ok(mapper.toCommentDTO(service.getById(id)));
     }
 
+    @Timed("comment.getAll")
     @GetMapping("/{postId}")
     public ResponseEntity<PagingData<CommentDTO>> getPostById(@PathVariable Long postId, @Parameter PagingDTO pagingDTO) {
         Page<Comment> comments = service.getAllByPostId(postId, pagingDTO.getPage(), pagingDTO.getSize());

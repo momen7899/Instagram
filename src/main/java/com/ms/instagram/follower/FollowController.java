@@ -2,6 +2,7 @@ package com.ms.instagram.follower;
 
 import com.ms.instagram.common.PagingDTO;
 import com.ms.instagram.common.PagingData;
+import io.micrometer.core.annotation.Timed;
 import io.swagger.v3.oas.annotations.Parameter;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -32,6 +33,7 @@ public class FollowController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
+    @Timed("following.getAll")
     @GetMapping("/following/{userId}")
     public ResponseEntity<PagingData<FollowerDTO>> findAllFollowing(@PathVariable Long userId, @Parameter PagingDTO pagingDTO) {
         Page<Follower> following = service.findAllFollowing(userId, pagingDTO.getPage(), pagingDTO.getSize());
@@ -40,6 +42,7 @@ public class FollowController {
         return ResponseEntity.ok(new PagingData<>(totalPage, pagingDTO.getPage(), data));
     }
 
+    @Timed("follower.getAll")
     @DeleteMapping("/follower/{userId}")
     public ResponseEntity<PagingData<FollowerDTO>> findAllFollower(@PathVariable Long userId, @Parameter PagingDTO pagingDTO) {
         Page<Follower> following = service.findAllFollowers(userId, pagingDTO.getPage(), pagingDTO.getSize());

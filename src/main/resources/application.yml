@@ -8,3 +8,22 @@ minio:
     secret: password
 
   url: http://127.0.0.1:9000
+
+---
+management:
+  security:
+    enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    health:
+      show-details: always
+    exposure.include: metrics,prometheus
+    exposure.exclude:
+
+  metrics:
+    tags:
+      application: MonitoringInstagramSpringDemoProject
+    enable:
+      jvm: true

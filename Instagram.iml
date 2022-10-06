@@ -15,7 +15,9 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
-        <datasource-mapping />
+        <datasource-mapping>
+          <factory-entry name="entityManagerFactory" />
+        </datasource-mapping>
         <naming-strategy-map />
       </configuration>
     </facet>
@@ -210,8 +212,8 @@
     <orderEntry type="library" name="Maven: org.locationtech.jts:jts-core:1.18.2" level="project" />
     <orderEntry type="library" name="Maven: org.geolatte:geolatte-geojson:1.8.2" level="project" />
     <orderEntry type="library" name="Maven: javax.validation:validation-api:2.0.1.Final" level="project" />
-    <orderEntry type="library" name="Maven: org.mapstruct:mapstruct:1.4.2.Final" level="project" />
-    <orderEntry type="library" name="Maven: io.minio:minio:8.4.3" level="project" />
+    <orderEntry type="library" name="Maven: org.mapstruct:mapstruct:1.5.2.Final" level="project" />
+    <orderEntry type="library" name="Maven: io.minio:minio:8.4.5" level="project" />
     <orderEntry type="library" name="Maven: com.carrotsearch.thirdparty:simple-xml-safe:2.7.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava:30.1.1-jre" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:failureaccess:1.0.1" level="project" />

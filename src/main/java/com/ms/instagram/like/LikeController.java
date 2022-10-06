@@ -6,7 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/like/")
+@RequestMapping(value = "/api/like/v1")
 @AllArgsConstructor
 public class LikeController {
 

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/follower/v1")
+@RequestMapping(value = "/api/follower/v1")
 @AllArgsConstructor
 public class FollowController {
 
